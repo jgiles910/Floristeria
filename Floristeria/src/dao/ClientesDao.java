@@ -9,8 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Clientes;
-import model.Flores;
-import model.Pedidos;
 
 public class ClientesDao {
 
@@ -47,56 +45,8 @@ public class ClientesDao {
 		}
 	}
 
-	public ArrayList<Flores> getFlores() throws SQLException {
 
-		ArrayList<Flores> listaFlores = new ArrayList<Flores>();
 
-		String sqlConsulta = "Select * from flores";
 
-		try (Connection con = getConnection();
-				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(sqlConsulta);) {
 
-			while (rs.next()) {
-				listaFlores.add(new Flores(rs.getInt("id_flor"), rs.getString("nombre"), rs.getString("color"), rs.getDouble("precio")));
-			}
-
-			return listaFlores;
-		}
-	}
-
-	public ArrayList<Pedidos> getPedidos() throws SQLException {
-
-		ArrayList<Pedidos> listaPedidos = new ArrayList<Pedidos>();
-
-		String sqlConsulta = "Select * from flores";
-
-		try (Connection con = getConnection();
-				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(sqlConsulta);) {
-
-			while (rs.next()) {
-				listaPedidos.add(new Pedidos(rs.getInt("id_pedido"), rs.getInt("id_cliente"), rs.getInt("id_flor"), rs.getInt("cantidad"), rs.getString("fecha")));
-			}
-
-			return listaPedidos;
-		}
-	}
-	
-	//Calcular y mostrar el precio medio de las flores.
-	public double calcularPrecioMedio() throws SQLException {
-		String sqlConsulta = "Select AVG(precio) as PrecioMedio from flores";
-		
-		double precioMedio = 0;
-		
-		try(Connection con = getConnection(); Statement st = con.createStatement(); 
-				ResultSet rs = st.executeQuery(sqlConsulta)) {
-			
-			while (rs.next()) {
-				precioMedio = rs.getDouble("PrecioMedio");
-			}
-		} 
-		
-		return precioMedio;
-	}
 }
