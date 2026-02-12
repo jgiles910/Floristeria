@@ -11,7 +11,7 @@ public class Pedidos {
 	public Pedidos() {
 		
 	}
-	public Pedidos(int flor, int cliente, int idPedido, int cantidad, String fecha) {
+	public Pedidos(int idPedido, int cliente, int flor, int cantidad, String fecha) {
 		
 		this.idFlor = flor;
 		this.idCliente = cliente;
